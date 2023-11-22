@@ -1,0 +1,55 @@
+﻿@model IEnumerable<empwebapp.Models.empp>
+
+@{
+    ViewData["Title"] = "getemplist";
+}
+
+<h1>getemplist</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.eAadhaar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.esalary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.eemail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.eAadhaar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.esalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eemail)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { pAadhaar = item.eAadhaar }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details","getempdetail",new{sAadhaar = item.eAadhaar}) |
+                    @Html.ActionLink("Salary","salary",new{page=item.esalary})  |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

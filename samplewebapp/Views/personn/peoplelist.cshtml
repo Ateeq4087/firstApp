@@ -1,0 +1,64 @@
+﻿@model IEnumerable<samplewebapp.Models.personn>
+
+@{
+    ViewData["Title"] = "peoplelist";
+}
+
+<h1>peoplelist</h1>
+<p>
+    <a asp-action="Create">Create New     
+    </a>
+    
+
+    @Html.ActionLink("Search Age Range","GetPeopleWithinAge",new {startAge = 10,endAge=30})
+</p>
+
+<p>
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Aadhaar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aadhaar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })  |
+
+                @Html.ActionLink("Details","GetPersonDetail",new{pAadhaar = item.Aadhaar})  |
+                @Html.ActionLink("Age","age",new{page=item.age})  |
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

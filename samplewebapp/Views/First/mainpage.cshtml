@@ -1,0 +1,34 @@
+﻿<h1>This is the index page</h1>
+<hr/>
+<h3>What is Razor</h3>
+<h4>Ans : Any Language + html . in out case its c# i.e C# + html</h4>
+<hr/>
+<h5> to add c# code to html, use symbol with multi-line code</h5>
+<hr/>
+@{
+    var message = "Hello Razor";
+
+}
+<input type="text" value=@message/>
+<hr/>
+<button onclick="alert('click ok to contiue')">ok</button>
+<hr/>
+@{
+    List<string> names = new List<string>();
+    names.Add("john");
+    names.Add("ka");
+    names.Add("sena");
+}
+<table>
+    <tr>
+        <td>Name:</td>
+    </tr>
+
+@foreach(var name in names)
+{
+    <tr>
+            <td> @Html.TextBoxFor(n=>name)</td>
+    </tr>
+    
+}
+</table>
